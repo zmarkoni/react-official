@@ -13,7 +13,7 @@ https://scotch.io/tutorials/setup-a-react-environment-using-webpack-and-babel
 ## Installation
 
 * Fork this repo.
-* Navigate to your fork of the react-startpack.
+* Navigate to your fork of the react-startpack https://github.com/joykare/react-startpack.
 * Under your repository name, click Clone or download.
 * In the Clone with HTTPs section, copy the clone URL for the repository.
 * Open Terminal.
@@ -34,3 +34,4 @@ Unpacking objects: 100% (10/10), done.
 * cd into the project root
 * In the project root, run `yarn install` to install dependencies
 * To start app `yarn start`
+* Open `http://localhost:8080/`
