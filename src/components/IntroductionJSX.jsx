@@ -1,12 +1,5 @@
 import React from 'react';
 
-function formatName(user) {
-    if (user) {
-        return user.firstName + ' ' + user.lastName;
-    }
-    return 'stranger';
-}
-
 const user = {
     firstName: 'Zoran',
     lastName: 'Markovic',
@@ -14,14 +7,18 @@ const user = {
     avatarUrl: 'http://lorempixel.com/400/200/'
 };
 
+function formatName(user) {
+    if (user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+    return 'stranger';
+}
+
 // Specifying Attributes and Specifying Children with JSX
-const CustomElement = (
-    <div>
-        <h2>Mr. {user.lastName}</h2>
-        <p>have {user.age} years! </p>
-    </div>
+const UserDescription = (
+    <p className="user__description">Have {user.age} years! </p>
 );
-const UserImg = (<img src={user.avatarUrl} alt={user.firstName} />);
+const UserImg = <img className="user__img" src={user.avatarUrl} alt={user.firstName} />;
 
 // Warning:
 // Since JSX is closer to JavaScript than to HTML, React DOM uses camelCase property naming convention instead of HTML attribute names.
@@ -30,13 +27,11 @@ const UserImg = (<img src={user.avatarUrl} alt={user.firstName} />);
 export class Element extends React.Component {
     render() {
         return (
-            <h1>
-                Hello, {formatName(user)}
-            </h1>,
-            <p>
-                UserImg: {UserImg}
-            </p>,
-            CustomElement
+            <div className="user">
+                <h1 className="user__name">{formatName(user)}</h1>
+                {UserImg}
+                {UserDescription}
+            </div>
         );
     }
 }
