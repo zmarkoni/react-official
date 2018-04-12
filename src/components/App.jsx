@@ -2,6 +2,8 @@ import React from 'react';
 // Import components
 import { HelloWorld } from './HelloWorld.jsx';
 import { Element } from './IntroductionJSX.jsx';
+// import { Clock } from "./Clock.jsx";
+import {ComponentsAndPros} from "./CoponentsAndPros.jsx";
 
 // 3 ways how to use it
 const CustomElement = (
@@ -17,6 +19,8 @@ export default class App extends React.Component {
                 <HelloWorld />
                 <Element />
                 {/*{CustomElement}*/}
+                {/*<Clock />*/}
+                <ComponentsAndPros />
             </div>
         );
     }
