@@ -3,7 +3,8 @@ import React from 'react';
 // import { HelloWorld } from './1_HelloWorld.jsx';
 // import { Element } from './2_IntroductionJSX.jsx';
 // import {ComponentsAndPros} from "./3_CoponentsAndPros.jsx";
-import {Clock} from "./4_StateAndLifecycle.jsx";
+// import {Clock} from "./4_StateAndLifecycle.jsx";
+import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
 
 
 // 3 ways how to use it
@@ -21,7 +22,9 @@ export default class App extends React.Component {
                 {/*<Element />*/}
                 {/*{CustomElement}*/}
                 {/*<ComponentsAndPros />*/}
-                <Clock />
+                {/*<Clock />*/}
+                <HandlingEvents />
+                <Toggle />
             </div>
         );
     }
