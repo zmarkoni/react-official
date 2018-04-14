@@ -4,7 +4,8 @@ import React from 'react';
 // import { Element } from './2_IntroductionJSX.jsx';
 // import {ComponentsAndPros} from "./3_CoponentsAndPros.jsx";
 // import {Clock} from "./4_StateAndLifecycle.jsx";
-import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
+// import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
+import {LoginControl} from "./6_ConditionalRendering.jsx";
 
 
 // 3 ways how to use it
@@ -23,8 +24,9 @@ export default class App extends React.Component {
                 {/*{CustomElement}*/}
                 {/*<ComponentsAndPros />*/}
                 {/*<Clock />*/}
-                <HandlingEvents />
-                <Toggle />
+                {/*<HandlingEvents />*/}
+                {/*<Toggle />*/}
+                <LoginControl />
             </div>
         );
     }
