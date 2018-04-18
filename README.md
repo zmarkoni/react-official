@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React-Startpack
 Bare minimum setup for a simple react app. Should save you a lot of time. You are very welcome!!
 
@@ -42,3 +43,7 @@ CMD-Y -> component definition in a popup with
 CMD-B -> jump to definition
 
 https://www.jetbrains.com/help/webstorm/react.html
+=======
+# react-official
+Lear React from official documentation
+>>>>>>> e72dd7889f5b9e25bdfc2d2420c90062f5c185ef

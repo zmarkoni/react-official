@@ -33,7 +33,11 @@ composer.phar
 public/css/*
 !public/css/.gitkeep
 !public/css/dist/.gitkeep
+<<<<<<< HEAD
 dist
+=======
+
+>>>>>>> e72dd7889f5b9e25bdfc2d2420c90062f5c185ef
 public/img/sprites/*
 
 # Default GIT ignore rules #
@@ -81,4 +85,8 @@ Thumbs.db
 .idea/*
 tests/_output/*
 # netBeans files #
+<<<<<<< HEAD
 /nbproject/*
+=======
+/nbproject/*
+>>>>>>> e72dd7889f5b9e25bdfc2d2420c90062f5c185ef
