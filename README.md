@@ -35,3 +35,10 @@ Unpacking objects: 100% (10/10), done.
 * In the project root, run `yarn install` to install dependencies
 * To start app `yarn start`
 * Open `http://localhost:8080/`
+
+
+https://blog.jetbrains.com/webstorm/2015/10/working-with-reactjs-in-webstorm-coding-assistance/
+CMD-Y -> component definition in a popup with
+CMD-B -> jump to definition
+
+https://www.jetbrains.com/help/webstorm/react.html

@@ -1,32 +1,28 @@
 import React from 'react';
 // Import components
-// import { HelloWorld } from './1_HelloWorld.jsx';
-// import { Element } from './2_IntroductionJSX.jsx';
-// import {ComponentsAndPros} from "./3_CoponentsAndPros.jsx";
-// import {Clock} from "./4_StateAndLifecycle.jsx";
-// import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
+import { Test } from './test.jsx';
+import { HelloWorld } from './1_HelloWorld.jsx';
+import { UserIntroductionJSX } from './2_IntroductionJSX.jsx';
+import {WelcomeComponent, Comments} from "./3_CoponentsAndPros.jsx";
+import {Clock} from "./4_StateAndLifecycle.jsx";
+import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
 import {LoginControl} from "./6_ConditionalRendering.jsx";
 
-
-// 3 ways how to use it
-const CustomElement = (
-    <p>
-        My Custom Element
-    </p>
-);
 
 export default class App extends React.Component {
     render() {
         return (
             <div>
-                {/*<HelloWorld />*/}
-                {/*<Element />*/}
+                {/*<Test />*/}
                 {/*{CustomElement}*/}
-                {/*<ComponentsAndPros />*/}
+                {/*<HelloWorld />*/}
+                {/*<UserIntroductionJSX />*/}
+                {/*<WelcomeComponent /> */}
+                {/*<Comments />*/}
                 {/*<Clock />*/}
                 {/*<HandlingEvents />*/}
-                {/*<Toggle />*/}
-                <LoginControl />
+                <Toggle />
+                {/*<LoginControl />*/}
             </div>
         );
     }

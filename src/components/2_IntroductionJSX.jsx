@@ -24,7 +24,7 @@ const UserImg = <img className="user__img" src={user.avatarUrl} alt={user.firstN
 // Since JSX is closer to JavaScript than to HTML, React DOM uses camelCase property naming convention instead of HTML attribute names.
 // For example, class becomes className in JSX, and tabindex becomes tabIndex.
 
-export class Element extends React.Component {
+export class UserIntroductionJSX extends React.Component {
     render() {
         return (
             <div className="user">

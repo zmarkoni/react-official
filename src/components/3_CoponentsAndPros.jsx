@@ -1,10 +1,13 @@
 import React from 'react';
 
+const user = {
+    name: 'Zoran',
+    age: 34
+};
 // Function can represent Component
 function Welcome(props) {
     return <h1>Welcome, {props.name}</h1>
 }
-
 
 //When React sees an element representing a user-defined component,
 //it passes JSX attributes to this component as a single object. We call this object “props”.
@@ -16,12 +19,46 @@ const element = <Welcome name="Sara" />; //Welcome is a function
 // 3.Our Welcome component returns a <h1>Hello, Sara</h1> element as the result.
 // 4.React DOM efficiently updates the DOM to match <h1>Hello, Sara</h1>.
 
-// Extracting components example
+export class WelcomeComponent extends React.Component {
+    render() {
+        return (
+            <div>
+                {element}
+                <Welcome name={user.name} />
+            </div>
+        );
+    }
+}
+
+// ======== Extracting components example =======
+//For example, consider this Comment component:
+// function Comment(props) {
+//   return (
+//     <div className="Comment">
+//       <div className="UserInfo">
+//         <img className="Avatar"
+//           src={props.author.avatarUrl}
+//           alt={props.author.name}
+//         />
+//         <div className="UserInfo-name">
+//           {props.author.name}
+//         </div>
+//       </div>
+//       <div className="Comment-text">
+//         {props.text}
+//       </div>
+//       <div className="Comment-date">
+//         {formatDate(props.date)}
+//       </div>
+//     </div>
+//   );
+// }
+// modify to individual components >>>>
 function Avatar(props) {
     return (
         <img className="Avatar"
-             src={props.user.avatarUrl}
-             alt={props.user.name}
+             src={props.author.avatarUrl}
+             alt={props.author.name}
         />
     );
 }
@@ -29,9 +66,9 @@ function Avatar(props) {
 function UserInfo(props) {
     return (
         <div className="UserInfo">
-            <Avatar user={props.user}/>
+            <Avatar author={props.author}/>
             <div className="UserInfo-name">
-                {props.user.name}
+                {props.author.name}
             </div>
         </div>
     );
@@ -44,7 +81,7 @@ function formatDate(date) {
 function Comment(props) {
   return (
     <div className="Comment">
-      <UserInfo user={props.author} />
+      <UserInfo author={props.author} />
       <div className="Comment-text">
         {props.text}
       </div>
@@ -68,10 +105,9 @@ const commentElement = {
 // Class also can represent Component
 // Important! -> Props are Read-Only
 // All React components must act like pure functions with respect to their props.
-export class ComponentsAndPros extends React.Component {
+export class Comments extends React.Component {
     render() {
         return (
-            <div>{element}</div>,
             // Call Comment component with commentElement data as props(properties - crveno)!!!
             <Comment
                 author={commentElement.author}

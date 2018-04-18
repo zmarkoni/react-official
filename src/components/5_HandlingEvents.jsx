@@ -33,6 +33,7 @@ export class Toggle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {isToggleOn: true};
+        this.url = "https://reactjs.org/docs/react-component.html";
         this.handleClick = this.handleClick.bind(this); // This binding is necessary to make `this` work in the callback
         // You have to be careful about the meaning of 'this' in JSX callbacks. In JavaScript,
         // 'class methods' are not bound by default. If you forget to bind this.handleClick and pass it to onClick,
@@ -41,12 +42,16 @@ export class Toggle extends React.Component {
     }
 
     handleClick() {
-        this.setState(
+        this.setState( // inside setState we can add Object, or Function or anything
+            // for more info about 'prevState' => https://reactjs.org/docs/react-component.html
             function(prevState) {
                 return {
                     isToggleOn: !prevState.isToggleOn
                 }
             }
+            // same
+            // or
+            // {isToggleOn: !this.state.isToggleOn}
         );
     }
 
@@ -60,6 +65,9 @@ export class Toggle extends React.Component {
                 <button onClick={this.handleClick}>
                     {this.state.isToggleOn ? 'ON' : 'OFF'}
                 </button>
+                <br />
+                <br />
+                <a href={this.url}>For more info about "prevState"</a>
             </div>
         );
     }

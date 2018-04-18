@@ -21,9 +21,9 @@ export class Clock extends React.Component {
     // This is called “mounting” in React.
     // The componentDidMount() hook runs after the component output has been rendered to the DOM.
     componentDidMount() {
-        // While this.props is set up by React itself and this.state has a special meaning,
+        // While 'this.props' is set up by React itself and 'this.state' has a special meaning,
         // you are free to add additional fields to the class manually if you need to store something
-        // that doesn’t participate in the data flow (like a timer ID).
+        // that does not participate in the data flow (like a timer ID).
         this.timerID = setInterval(
             () => this.tick(), // set new state in the method tick
             1000
@@ -56,7 +56,7 @@ export class Clock extends React.Component {
           </div>
         );
     }
-}
+} // end of Clock class
 
 // The Data Flows Down
 //  A component may choose to pass its state down as props to its child components:
@@ -68,12 +68,16 @@ function Message(props) {
 
 // Let’s quickly recap what’s going on and the order in which the methods are called:
 //
-// When <Clock /> is passed to ReactDOM.render(), React calls the constructor of the Clock component. Since Clock needs to display the current time, it initializes this.state with an object including the current time. We will later update this state.
+// When <Clock /> is passed to ReactDOM.render(), React calls the constructor of the Clock component. Since Clock needs to display the current time,
+// it initializes this.state with an object including the current time. We will later update this state.
 //
 // React then calls the Clock component’s render() method. This is how React learns what should be displayed on the screen. React then updates the DOM to match the Clock’s render output.
 //
 // When the Clock output is inserted in the DOM, React calls the componentDidMount() lifecycle hook. Inside it, the Clock component asks the browser to set up a timer to call the component’s tick() method once a second.
 //
-// Every second the browser calls the tick() method. Inside it, the Clock component schedules a UI update by calling setState() with an object containing the current time. Thanks to the setState() call, React knows the state has changed, and calls the render() method again to learn what should be on the screen. This time, this.state.date in the render() method will be different, and so the render output will include the updated time. React updates the DOM accordingly.
+// Every second the browser calls the tick() method. Inside it, the Clock component schedules a UI update by calling setState() with an object containing the current time.
+// Thanks to the setState() call,
+// React knows the state has changed, and calls the render() method again to learn what should be on the screen.
+// This time, this.state.date in the render() method will be different, and so the render output will include the updated time. React updates the DOM accordingly.
 //
 // If the Clock component is ever removed from the DOM, React calls the componentWillUnmount() lifecycle hook so the timer is stopped.
