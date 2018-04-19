@@ -21,8 +21,8 @@ export default class App extends React.Component {
                 {/*<Comments />*/}
                 {/*<Clock />*/}
                 {/*<HandlingEvents />*/}
-                <Toggle />
-                {/*<LoginControl />*/}
+                {/*<Toggle />*/}
+                <LoginControl />
             </div>
         );
     }

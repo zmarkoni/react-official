@@ -33,7 +33,7 @@ export class LoginControl extends React.Component {
       </div>
     );
   }
-}
+} // end of LoginControl class
 
 function UserGreeting(props) {
   return <h1>Welcome back!</h1>;
@@ -47,22 +47,19 @@ function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
     return <UserGreeting />;
+  } else {
+      return <GuestGreeting/>;
   }
-  return <GuestGreeting />;
 }
 
 function LoginButton(props) {
   return (
-    <button onClick={props.onClick}>
-      Login
-    </button>
+    <button onClick={props.onClick}>Login</button>
   );
 }
 
 function LogoutButton(props) {
   return (
-    <button onClick={props.onClick}>
-      Logout
-    </button>
+    <button onClick={props.onClick}>Logout</button>
   );
 }
