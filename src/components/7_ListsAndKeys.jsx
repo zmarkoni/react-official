@@ -64,3 +64,52 @@ export class List extends React.Component {
 // );
 
 // For more info check DOCS!!!
+
+function Blog(props) {
+    const posts = props.posts;
+    const listItems = posts.map((post) =>
+        <li key={post.id}>
+            {post.title}
+        </li>
+    );
+
+    const sidebar = (
+        <div>
+            <p>Sadrzaj:</p>
+            <ul>
+                {listItems}
+            </ul>
+        </div>
+    );
+
+    const content = posts.map((post) =>
+        <div key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+        </div>
+    );
+
+    return (
+        <div>
+            {sidebar}
+            <hr/>
+            {content}
+        </div>
+    )
+}
+
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'},
+  {id: 3, title: 'Test', content: 'Test Lists and Keys.'}
+];
+
+export class Posts extends React.Component {
+    render() {
+        return (
+          <div>
+              <Blog posts={posts} />
+          </div>
+        );
+    }
+}// end of class
