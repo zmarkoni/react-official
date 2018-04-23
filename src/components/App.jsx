@@ -8,6 +8,7 @@ import {Clock} from "./4_StateAndLifecycle.jsx";
 import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
 import {LoginControl} from "./6_ConditionalRendering.jsx";
 import {List, Posts} from "./7_ListsAndKeys.jsx";
+import {Forms} from "./8_Forms.jsx";
 
 export default class App extends React.Component {
     render() {
@@ -24,7 +25,8 @@ export default class App extends React.Component {
                 {/*<Toggle />*/}
                 {/*<LoginControl />*/}
                 {/*<List />*/}
-                <Posts />
+                {/*<Posts />*/}
+                <Forms />
             </div>
         );
     }
