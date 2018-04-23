@@ -46,3 +46,5 @@ export class Forms extends React.Component {
         );
    }
 }// end of CLASS
+
+// How to have multiple elements in the form which use value, like textarea, name...
