@@ -1,6 +1,6 @@
 import React from 'react';
 // Import components
-import { Test } from './test.jsx';
+import {Test} from "./test.jsx";
 import { HelloWorld } from './1_HelloWorld.jsx';
 import { UserIntroductionJSX } from './2_IntroductionJSX.jsx';
 import {WelcomeComponent, Comments} from "./3_CoponentsAndPros.jsx";
@@ -15,7 +15,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Test />
+                {/*<Test/>*/}
                 {/*{CustomElement}*/}
                 {/*<HelloWorld />*/}
                 {/*<UserIntroductionJSX />*/}
@@ -28,7 +28,7 @@ export default class App extends React.Component {
                 {/*<List />*/}
                 {/*<Posts />*/}
                 {/*<Forms />*/}
-                {/*<Calculator />*/}
+                <Calculator />
             </div>
         );
     }
