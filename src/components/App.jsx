@@ -9,12 +9,13 @@ import {HandlingEvents, Toggle} from "./5_HandlingEvents.jsx";
 import {LoginControl} from "./6_ConditionalRendering.jsx";
 import {List, Posts} from "./7_ListsAndKeys.jsx";
 import {Forms} from "./8_Forms.jsx";
+import {Calculator} from "./9_LiftingStateUp.jsx";
 
 export default class App extends React.Component {
     render() {
         return (
             <div>
-                {/*<Test />*/}
+                <Test />
                 {/*{CustomElement}*/}
                 {/*<HelloWorld />*/}
                 {/*<UserIntroductionJSX />*/}
@@ -26,7 +27,8 @@ export default class App extends React.Component {
                 {/*<LoginControl />*/}
                 {/*<List />*/}
                 {/*<Posts />*/}
-                <Forms />
+                {/*<Forms />*/}
+                {/*<Calculator />*/}
             </div>
         );
     }
