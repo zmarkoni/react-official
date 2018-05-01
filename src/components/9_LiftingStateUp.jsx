@@ -23,7 +23,7 @@ export class Calculator extends React.Component {
         this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
     }
 
-    handleCelsiusChange(temperature) {
+    handleCelsiusChange(temperature, scale) {
         this.setState({temperature, scale:'c'})
     }
 
@@ -84,6 +84,7 @@ class TemperatureInput extends React.Component {
     }
 }// class end
 
+// convertFunctions
 function toCelsius(fahrenheit) {
   return (fahrenheit - 32) * 5 / 9;
 }
@@ -95,13 +96,14 @@ function toFahrenheit(celsius) {
 // function that takes a string temperature and a converter function as arguments and returns a string.
 // We will use it to calculate the value of one input based on the other input.
 // It returns an empty string on an invalid temperature, and it keeps the output rounded to the third decimal place:
-function tryConvert(temperature, convert) {
+function tryConvert(temperature, convertFunction) {
   const input = parseFloat(temperature);
   if (Number.isNaN(input)) {
     return '';
   }
-  const output = convert(input);
+  const output = convertFunction(input);
   const rounded = Math.round(output * 1000) / 1000;
+  console.log('output: ' + rounded.toString());
   return rounded.toString();
 }
 // For example, tryConvert('abc', toCelsius) returns an empty string,
