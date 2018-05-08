@@ -10,6 +10,7 @@ import {LoginControl} from "./6_ConditionalRendering.jsx";
 import {List, Posts} from "./7_ListsAndKeys.jsx";
 import {Forms} from "./8_Forms.jsx";
 import {Calculator} from "./9_LiftingStateUp.jsx";
+import {Welcome, SignUpForMars} from "./10_Composition.jsx";
 
 export default class App extends React.Component {
     render() {
@@ -28,7 +29,9 @@ export default class App extends React.Component {
                 {/*<List />*/}
                 {/*<Posts />*/}
                 {/*<Forms />*/}
-                <Calculator />
+                {/*<Calculator />*/}
+                {/*<Welcome/>*/}
+                <SignUpForMars/>
             </div>
         );
     }
