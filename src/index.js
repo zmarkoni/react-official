@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+// import App from './components/App.jsx';
+import {App} from './productTable/App.jsx';
 
 ReactDOM.render(
     <App />,
