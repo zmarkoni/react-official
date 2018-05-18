@@ -42,94 +42,80 @@ For each piece of state in your application:
       and add it somewhere in the hierarchy above the common owner component.
  */
 
-class ProductCategoryRow extends React.Component {
+const PRODUCTS = [
+    {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
+    {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
+    {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
+    {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
+    {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
+    {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+];
+
+export class App extends React.Component {
     render() {
         return (
-            <tr>
-                <th>{this.props.category}</th>
-            </tr>
+            <div>
+                <ShowProducts products={PRODUCTS}/>
+            </div>
         );
     }
 }
 
-class ProductRow extends React.Component {
-    render() {
-        const product = this.props.product,
-              name = product.stocked ? product.name : <span style={{color: 'red'}}> {product.name} </span>;
-
-        return (
-            <tr>
-                <td>{name}</td>
-                <td>{product.price}</td>
-            </tr>
-        );
-    }
-}
-
-class ProductTable extends React.Component {
-    render() {
-        const filterText = this.props.filterText;
-        const inStockOnly = this.props.inStockOnly;
-
-        const rows=[];
-        let lastCategory;
-
-        // unresolve variable products ???  a radi !!!
-        this.props.products.forEach((product) => {
-            if(product.name.indexOf(filterText) === -1) {
-                return;
-            }
-            if(inStockOnly && !product.stocked) {
-                return;
-            }
-
-            if(product.category !== lastCategory) {
-                rows.push(
-                    <ProductCategoryRow
-                        category={product.category}
-                        key={product.category}
-                    />
-                );
-            }
-
-            rows.push(
-                <ProductRow
-                    product={product}
-                    key={product.name}
-                />
-            );
-            lastCategory = product.category;
-        });
-
-        return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        );
-    }
-}
-
-class SearchBar extends React.Component {
+class ShowProducts extends React.Component {
+    // Owner of the state
     constructor(props) {
         super(props);
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-        this.handleInStockChange = this.handleInStockChange.bind(this);
+        this.state = {
+            filterText: '',
+            inStockOnly: false
+        };
+        this.stateHandleFilterText = this.stateHandleFilterText.bind(this);
+        this.stateHandleStock = this.stateHandleStock.bind(this);
     }
 
-    handleFilterTextChange(e) {
-        this.props.onFilterTextChangeCallback(e.target.value);
+    stateHandleFilterText(filterText) {
+        this.setState({
+            filterText: filterText
+        })
     }
 
-    handleInStockChange(e) {
-        this.props.onInStockChangeCallback(e.target.checked);
+    stateHandleStock(inStockOnly) {
+        this.setState({
+            inStockOnly: inStockOnly
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <SearchBox
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                    handeChangeFilterTextCallback={this.stateHandleFilterText}
+                    handleChangeStockCallback={this.stateHandleStock}
+                />
+                <ProductTable
+                    products={this.props.products}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}/>
+            </div>
+        );
+    }
+}
+
+class SearchBox extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onHandeChangeFilterText = this.onHandeChangeFilterText.bind(this);
+        this.onHandleChangeStock = this.onHandleChangeStock.bind(this);
+    }
+
+    onHandeChangeFilterText(e) {
+        this.props.handeChangeFilterTextCallback(e.target.value);
+    }
+
+    onHandleChangeStock(e) {
+        this.props.handleChangeStockCallback(e.target.checked);
     }
 
     render() {
@@ -139,81 +125,94 @@ class SearchBar extends React.Component {
                     type="text"
                     placeholder="Search..."
                     value={this.props.filterText}
-                    onChange={this.handleFilterTextChange}
+                    onChange={this.onHandeChangeFilterText}
                 />
                 <p>
                     <input
                         type="checkbox"
                         checked={this.props.inStockOnly}
-                        onChange={this.handleInStockChange}
+                        onChange={this.onHandleChangeStock}
                     />
-                    {' '}
-                    Only show products in the stock
+                    <span> Only show products in stock</span>
                 </p>
             </form>
+        )
+    }
+}
+
+class ProductTable extends React.Component {
+    render() {
+        const tableRows = [];
+        let lastCategory = null;
+        const filterText = this.props.filterText.toLowerCase();
+        const inStockOnly = this.props.inStockOnly;
+
+        this.props.products.forEach((product) => {
+
+            // don't show if is not in the filterText
+            if (product.name.toLowerCase().indexOf(filterText) === -1) {
+                return;
+            }
+
+            // don't show if is not in the stock
+            if (!product.stocked && inStockOnly) {
+                return;
+            }
+
+            if (product.category !== lastCategory) {
+                tableRows.push(
+                    <ProductCategory
+                        category={product.category}
+                        key={product.category}/>
+                );
+            }
+
+            tableRows.push(
+                <ProductData
+                    productData={product}
+                    key={product.name}/>
+            );
+
+
+            lastCategory = product.category;
+        });// forEach
+
+        return (
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                {tableRows}
+                </tbody>
+            </table>
         );
     }
 }
 
-class FilterableProductTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filterText: '',
-            inStockOnly: false
-        };
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-        this.handleInStockChange = this.handleInStockChange.bind(this);
-    }
-
-    handleFilterTextChange(filterText) {
-        this.setState({
-            filterText: filterText
-            }
-        )
-    }
-
-    handleInStockChange(inStockOnly) {
-        this.setState({
-                inStockOnly: inStockOnly
-            }
-        )
-    }
-
+class ProductCategory extends React.Component {
     render() {
         return (
-            <div>
-               <SearchBar
-                   filterText={this.state.filterText}
-                   inStockOnly={this.state.inStockOnly}
-                   onFilterTextChangeCallback={this.handleFilterTextChange} // callback
-                   onInStockChangeCallback={this.handleInStockChange} // callback
-               />
-               <ProductTable
-                   products={this.props.products}
-                   filterText={this.state.filterText}
-                   inStockOnly={this.state.inStockOnly}
-               />
-            </div>
-        );
-   }
+            <tr>
+                <th>{this.props.category}</th>
+            </tr>
+        )
+    }
 }
 
-const PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];
-
-export class App extends React.Component {
+class ProductData extends React.Component {
     render() {
+        const productData = this.props.productData;
+        const name = productData.stocked ? productData.name : <span style={{color: 'red'}}>{productData.name}</span>;
+
         return (
-            <div>
-                <FilterableProductTable products={PRODUCTS} />
-            </div>
-        );
-   }
+            <tr>
+                <td>{name}</td>
+                <td>{productData.price}</td>
+            </tr>
+        )
+    }
 }
