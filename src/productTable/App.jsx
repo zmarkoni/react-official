@@ -91,7 +91,7 @@ class ShowProducts extends React.Component {
                 <SearchBox
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
-                    handeChangeFilterTextCallback={this.stateHandleFilterText}
+                    handleChangeFilterTextCallback={this.stateHandleFilterText}
                     handleChangeStockCallback={this.stateHandleStock}
                 />
                 <ProductTable
@@ -106,12 +106,12 @@ class ShowProducts extends React.Component {
 class SearchBox extends React.Component {
     constructor(props) {
         super(props);
-        this.onHandeChangeFilterText = this.onHandeChangeFilterText.bind(this);
+        this.onHandleChangeFilterText = this.onHandleChangeFilterText.bind(this);
         this.onHandleChangeStock = this.onHandleChangeStock.bind(this);
     }
 
-    onHandeChangeFilterText(e) {
-        this.props.handeChangeFilterTextCallback(e.target.value);
+    onHandleChangeFilterText(e) {
+        this.props.handleChangeFilterTextCallback(e.target.value);
     }
 
     onHandleChangeStock(e) {
@@ -125,7 +125,7 @@ class SearchBox extends React.Component {
                     type="text"
                     placeholder="Search..."
                     value={this.props.filterText}
-                    onChange={this.onHandeChangeFilterText}
+                    onChange={this.onHandleChangeFilterText}
                 />
                 <p>
                     <input
