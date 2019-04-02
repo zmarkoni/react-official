@@ -36,6 +36,8 @@ Unpacking objects: 100% (10/10), done.
 * To start app `yarn start`
 * Open `http://localhost:8080/`
 
+* In index.js we define which app.jsx will render
+
 
 https://blog.jetbrains.com/webstorm/2015/10/working-with-reactjs-in-webstorm-coding-assistance/
 CMD-Y -> component definition in a popup with

@@ -1,28 +1,58 @@
 import React from 'react';
 
+// Using map, filter, reduce
+export class MapFilterReduce extends React.Component {
+    render() {
+        const users = [
+            { name: 'Robin', isDeveloper: true },
+            { name: 'Markus', isDeveloper: false },
+        ];
+
+        const showUsers = false;
+
+        // if (!showUsers) {
+        //   return null; // this is valid in React
+        // }
+
+        return (
+            <div>
+                {
+                    showUsers && (
+                        <ul>
+                            {users.map(user => <li>{user.name}</li>)}
+                        </ul>
+                    )
+                }
+            </div>
+        );
+    }
+}
+
 // Transforming arrays into lists of elements
 // https://reactjs.org/docs/lists-and-keys.html
 
 // Component that accepts an array of numbers and outputs an unordered list of elements.
 function ListItem(props) {
-  // Correct! There is no need to specify the key here:
-  return <li>{props.value}</li>;
+    // Correct! There is no need to specify the key here:
+    return <li>{props.value}</li>;
 }
 
 function NumberList(props) {
-    const numbers=props.numbers;
+    const numbers = props.numbers;
     // A good rule of thumb is that elements inside the map() call need keys.
     const listItems = numbers.map((number) => (
-        {/*
-            <li key={number.toString()}> //Key should be specified inside the array.
-                {number}
-            </li>
-        */},
-        // Or like this if we use another component -> Extracting Components with Keys
-        <ListItem
-            key={number.toString()}
-            value={number}
-        />
+        {
+            /*
+                        <li key={number.toString()}> //Key should be specified inside the array.
+                            {number}
+                        </li>
+                    */
+        },
+            // Or like this if we use another component -> Extracting Components with Keys
+            <ListItem
+                key={number.toString()}
+                value={number}
+            />
 
     ));
 
@@ -34,20 +64,20 @@ function NumberList(props) {
 const numbers = [1, 2, 3, 4, 5];
 
 export class List extends React.Component {
-   constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
             name: 'Zoki'
         }
-   }
+    }
 
-   render() {
+    render() {
         return (
             <div>
-                <NumberList numbers={numbers} />
+                <NumberList numbers={numbers}/>
             </div>
         );
-   }
+    }
 }// end of CLASS
 
 // Keys
@@ -99,17 +129,17 @@ function Blog(props) {
 }
 
 const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'},
-  {id: 3, title: 'Test', content: 'Test Lists and Keys.'}
+    {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+    {id: 2, title: 'Installation', content: 'You can install React from npm.'},
+    {id: 3, title: 'Test', content: 'Test Lists and Keys.'}
 ];
 
 export class Posts extends React.Component {
     render() {
         return (
-          <div>
-              <Blog posts={posts} />
-          </div>
+            <div>
+                <Blog posts={posts}/>
+            </div>
         );
     }
 }// end of class

@@ -5,11 +5,16 @@
     <title>React Hello World</title>
   </head>
   <body>
+    <p>Before learning React: <a href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">JavaScript fundamentals before learning React</a></p>
     <p>Learn react from: <a href="https://reactjs.org/docs/try-react.html">Official docs</a></p>
     <p>React DevTools: <a href="https://reactjs.org/blog/2015/09/02/new-react-developer-tools.html">DevTools</a></p>
     <p>React setup: <a href="https://github.com/joykare/react-startpack">React Startpack</a></p>
 
+    <!--Build app => https://reactjs.org/docs/thinking-in-react.html-->
     <div id="root"></div>
+    <!--
+    in index.js we define which app.jsx will render
+    -->
     <!--
       We use webpack for compiling JSX
       Also we use HtmlWebpackPlugin so we don't need to include any script on the page
@@ -24,6 +29,12 @@
       You can also use React without JSX, in which case you can remove Babel:
       * https://reactjs.org/docs/react-without-jsx.html
       * https://reactjs.org/docs/cdn-links.html
+    -->
+
+    <!--
+    * To start app `yarn start`
+    * Open `http://localhost:8080/`
+    * In index.js we define which app.jsx will render
     -->
   </body>
 </html>

@@ -1,13 +1,14 @@
 import React from 'react';
 
 // https://reactjs.org/docs/thinking-in-react.html
-/* Now that we’ve identified the components in our mock, let’s arrange them into a hierarchy. This is easy. Components that appear within another component in the mock should appear as a child in the hierarchy:
-MOC :  https://reactjs.org/static/thinking-in-react-components-eb8bda25806a89ebdc838813bdfa3601-82965.png
-FilterableProductTable
-    SearchBar
-    ProductTable
-        ProductCategoryRow
-        ProductRow
+/* Now that we’ve identified the components in our mock, let’s arrange them into a hierarchy.
+This is easy.
+Components that appear within another component in the mock should appear as a child in the hierarchy:
+    FilterableProductTable
+        SearchBar
+        ProductTable
+            ProductCategoryRow
+            ProductRow
 */
 
 
@@ -41,6 +42,9 @@ For each piece of state in your application:
     4.If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state
       and add it somewhere in the hierarchy above the common owner component.
  */
+
+// Final result => https://codepen.io/gaearon/pen/LzWZvb?editors=0010
+
 
 const PRODUCTS = [
     {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
